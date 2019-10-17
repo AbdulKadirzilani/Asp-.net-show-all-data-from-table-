@@ -1,0 +1,47 @@
+﻿@model Tuto7.Models.Student 
+@{
+    ViewData["Title"] = "SaveStd";
+}
+
+<h1>Save Std</h1>
+<h1>@ViewBag.Message</h1>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+<div>
+<table>
+
+    <tr>
+        <td>@Html.LabelFor(c => c.Name) </td>
+        <td>@Html.TextBoxFor(c => c.Name,new { @class = "form-control" }) </td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(c => c.Mobile) </td>
+        <td>@Html.DropDownListFor(c => c.Mobile,new SelectList(ViewBag.Mobile),"---Selelct---",new { @class = "form-control" }) </td>
+
+    </tr>
+   
+    <tr>
+        <td></td>
+        <td> <input type="submit" value="Save" /> </td>
+    </tr>
+</table>
+
+<table class=" table table-bordered ">
+
+    @foreach (var item in ViewBag.Students)
+    {
+
+    <tr>
+        <td> @item.Name</td>
+        <td> @item.Mobile</td>
+    </tr>
+
+    }
+
+
+</table>
+</div>
+}
+
